@@ -1,0 +1,16 @@
+*.iml
+release.keystore
+.gradle
+/local.properties
+/key.properties
+/.idea
+.DS_Store
+/build
+/app/production
+/captures
+.externalNativeBuild
+
+
+# fastlane
+fastlane/README.md
+fastlane/report.xml
