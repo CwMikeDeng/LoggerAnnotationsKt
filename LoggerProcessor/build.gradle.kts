@@ -16,6 +16,4 @@ kotlin {
 dependencies {
     implementation(project(":LoggerAnnotations"))
     implementation(libs.symbol.processing.api)
-//    implementation(libs.auto.service)
-//    ksp(libs.auto.service)
 }
