@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "LoggerAnnotationsKt"
 include(":app")
- 
+include(":LoggerAnnotations")
+include(":LoggerProcessor")

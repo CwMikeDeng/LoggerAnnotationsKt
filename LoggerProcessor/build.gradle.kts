@@ -1,0 +1,21 @@
+plugins {
+    id("java-library")
+    alias(libs.plugins.jetbrains.kotlin.jvm)
+    alias(libs.plugins.googleDevToolsKsp)
+}
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+kotlin {
+    compilerOptions {
+        jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11
+    }
+}
+
+dependencies {
+    implementation(project(":LoggerAnnotations"))
+    implementation(libs.symbol.processing.api)
+//    implementation(libs.auto.service)
+//    ksp(libs.auto.service)
+}
