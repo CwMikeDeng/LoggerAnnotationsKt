@@ -23,7 +23,7 @@ class LoggerProcessor(
         loggerInterface.forEach { (interfaceName, functions) ->
             val file = codeGenerator.createNewFile(
                 Dependencies.ALL_FILES,
-                packageName = "com.generated",
+                packageName = "tw.mike.loggerannotationskt",
                 fileName = "LoggerImpl"
             )
 
