@@ -6,6 +6,7 @@ import com.google.devtools.ksp.processing.KSPLogger
 import com.google.devtools.ksp.processing.Resolver
 import com.google.devtools.ksp.processing.SymbolProcessor
 import com.google.devtools.ksp.symbol.KSAnnotated
+import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.symbol.KSFunctionDeclaration
 import tw.mike.loggerannotations.EventKey
 
@@ -14,6 +15,11 @@ class LoggerProcessor(
     private val logger: KSPLogger
 ) : SymbolProcessor {
 
+    companion object {
+        /** 被生成出來的檔案所在路徑 */
+        private const val BUILT_FILE_PATH = "tw.mike.loggerannotationskt"
+    }
+
     override fun process(resolver: Resolver): List<KSAnnotated> {
         logger.info("[LoggerProcessor start]")
         val loggerInterface = resolver.getSymbolsWithAnnotation(EventKey::class.qualifiedName!!)
@@ -21,17 +27,29 @@ class LoggerProcessor(
             .groupBy { it.parentDeclaration?.simpleName?.asString() }
 
         loggerInterface.forEach { (interfaceName, functions) ->
+            // 取得原始檔案路徑，用來加在import上
+            val interfaceDecl = functions.firstOrNull()?.parentDeclaration as? KSClassDeclaration
+            val packageName =
+                interfaceDecl?.containingFile?.packageName?.asString() ?: BUILT_FILE_PATH
+
             val file = codeGenerator.createNewFile(
                 Dependencies.ALL_FILES,
-                packageName = "tw.mike.loggerannotationskt",
-                fileName = "LoggerImpl"
+                packageName = BUILT_FILE_PATH,
+                fileName = "${interfaceName}Impl"
             )
 
             file.bufferedWriter().use { writer ->
-                // TODO: 這個package要改
-                writer.write("package tw.mike.loggerannotationskt\n\n")
-                writer.write("import android.util.Log\n\n")
-                writer.write("class LoggerImpl : $interfaceName {\n")
+                writer.write(
+                    """
+                        package $BUILT_FILE_PATH
+                        
+                        import $packageName.$interfaceName
+                        import android.util.Log
+                        
+                        class ${interfaceName}Impl : $interfaceName {
+                        
+                    """.trimIndent()
+                )
 
                 for (func in functions) {
                     val eventName = func.annotations
