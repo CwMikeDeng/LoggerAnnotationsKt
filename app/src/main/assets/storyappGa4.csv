@@ -253,7 +253,7 @@ click_topic,topic_id,1,分類id,分類頁,用戶點擊分類列表中的分類�
 ,topic_name,最新上架,分類名稱,,,,,,,
 ,location_id,1,由左至右、由上至下，顯示1-n,,,,,,,
 app_notification_open,name,測試galleryPlaylist,推播訊息的名稱,,開啟推播,true,,true,,
-,time,Wed Jul 27 2022 12:00:00 GMT+0800 (Taiwan Standard Time),發送推播訊息的時間,,,,,,,
+,time,Wed Jul 27 2022 12:00:00 GMT+0800 (台北標準時間),發送推播訊息的時間,,,,,,,
 app_notification_receive,name,通知主題,推播訊息的名稱,,收到推播,true,,true,,
 ,time,發送時間
 2023-12-01 23:25:29,發送推播訊息的時間,,,true,,true,,
