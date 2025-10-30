@@ -215,15 +215,13 @@ finish_interactive_story,id
 interactive_story_listencomplete,story_id
 ,story_name
 join_beta_test_plan,
-view_recommend
-（推薦曝光）,position_id
+view_recommend,position_id
 ,position_name
 ,album_id
 ,album_name
 ,location_id
 ,referral
-select_recommend
-（點擊推薦版位）,position_id
+select_recommend,position_id
 ,position_name
 ,album_id
 ,album_name
