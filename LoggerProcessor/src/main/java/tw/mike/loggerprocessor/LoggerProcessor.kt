@@ -8,6 +8,7 @@ import com.google.devtools.ksp.processing.SymbolProcessor
 import com.google.devtools.ksp.symbol.KSAnnotated
 import com.google.devtools.ksp.symbol.KSClassDeclaration
 import com.google.devtools.ksp.symbol.KSFunctionDeclaration
+import com.google.devtools.ksp.symbol.Nullability
 import tw.mike.loggerannotations.EventKey
 
 class LoggerProcessor(
@@ -58,10 +59,12 @@ class LoggerProcessor(
 
                     val params = func.parameters.map {
                         val name = it.name?.asString()!!
-                        val type = it.type.resolve().declaration.simpleName.asString()
-                        val key =
-                            it.annotations.first { ann -> ann.shortName.asString() == "ParamKey" }
-                                .arguments[0].value as String
+                        val resolvedType = it.type.resolve()
+                        val baseType = resolvedType.declaration.simpleName.asString()
+                        val type = if (resolvedType.nullability == Nullability.NULLABLE) "$baseType?" else baseType
+                        val key = it.annotations
+                            .first { ann -> ann.shortName.asString() == "ParamKey" }
+                            .arguments[0].value as String
                         Triple(name, type, key)
                     }
 
