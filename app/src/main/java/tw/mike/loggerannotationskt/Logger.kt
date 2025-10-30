@@ -545,11 +545,6 @@ interface Logger {
         @ParamKey("referral") referral: String?
     )
 
-    @EventKey("dialog_impression")
-    fun dialogImpression(
-        @ParamKey("???") ???: String?
-    )
-
     @EventKey("labelCardList_click")
     fun labelcardlistClick(
         @ParamKey("position_page") positionPage: String?,
