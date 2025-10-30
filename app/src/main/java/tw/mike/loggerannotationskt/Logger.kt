@@ -171,6 +171,9 @@ interface Logger {
         @ParamKey("referral") referral: String?
     )
 
+    @EventKey("story_cache_delete")
+    fun storyCacheDelete()
+
     @EventKey("set_timer")
     fun setTimer(
         @ParamKey("story_id") storyId: String?,
@@ -245,8 +248,8 @@ interface Logger {
         @ParamKey("name") name: String?
     )
 
-    @EventKey("sort_storylist")
-    fun sortStorylist(
+    @EventKey("sort_storylist ")
+    fun sortStorylist (
         @ParamKey("id") id: String?,
         @ParamKey("name") name: String?
     )
@@ -278,8 +281,8 @@ interface Logger {
         @ParamKey("name") name: String?
     )
 
-    @EventKey("play_interactive_story")
-    fun playInteractiveStory(
+    @EventKey(" play_interactive_story")
+    fun  playInteractiveStory(
         @ParamKey("id") id: String?,
         @ParamKey("name") name: String?
     )
@@ -295,6 +298,9 @@ interface Logger {
         @ParamKey("story_id") storyId: String?,
         @ParamKey("story_name") storyName: String?
     )
+
+    @EventKey("join_beta_test_plan")
+    fun joinBetaTestPlan()
 
     @EventKey("view_recommend")
     fun viewRecommend(
@@ -381,9 +387,7 @@ interface Logger {
     )
 
     @EventKey("notifications_center_click")
-    fun notificationsCenterClick(
-        @ParamKey("???") ???: String?
-    )
+    fun notificationsCenterClick()
 
     @EventKey("notifications_type_click")
     fun notificationsTypeClick(
@@ -545,8 +549,11 @@ interface Logger {
         @ParamKey("referral") referral: String?
     )
 
+    @EventKey("dialog_impression")
+    fun dialogImpression()
+
     @EventKey("labelCardList_click")
-    fun labelcardlistClick(
+    fun labelCardListClick(
         @ParamKey("position_page") positionPage: String?,
         @ParamKey("position_type") positionType: String?,
         @ParamKey("id") id: String?,
@@ -555,7 +562,7 @@ interface Logger {
     )
 
     @EventKey("bannerList_click")
-    fun bannerlistClick(
+    fun bannerListClick(
         @ParamKey("position_page") positionPage: String?,
         @ParamKey("name") name: String?,
         @ParamKey("id") id: String?,
@@ -563,7 +570,7 @@ interface Logger {
     )
 
     @EventKey("specialPick_click")
-    fun specialpickClick(
+    fun specialPickClick(
         @ParamKey("position_page") positionPage: String?,
         @ParamKey("position_type") positionType: String?,
         @ParamKey("id") id: String?,
@@ -572,7 +579,7 @@ interface Logger {
     )
 
     @EventKey("verticalCardList_click")
-    fun verticalcardlistClick(
+    fun verticalCardListClick(
         @ParamKey("id") id: String?,
         @ParamKey("name") name: String?,
         @ParamKey("group_age") groupAge: String?,
@@ -582,7 +589,7 @@ interface Logger {
     )
 
     @EventKey("circleCardList_click")
-    fun circlecardlistClick(
+    fun circleCardListClick(
         @ParamKey("position_page") positionPage: String?,
         @ParamKey("position_type") positionType: String?,
         @ParamKey("id") id: String?,
@@ -591,7 +598,7 @@ interface Logger {
     )
 
     @EventKey("rankCardList_click")
-    fun rankcardlistClick(
+    fun rankCardListClick(
         @ParamKey("position_page") positionPage: String?,
         @ParamKey("position_type") positionType: String?,
         @ParamKey("id") id: String?,
@@ -600,7 +607,7 @@ interface Logger {
     )
 
     @EventKey("eventCardList_click")
-    fun eventcardlistClick(
+    fun eventCardListClick(
         @ParamKey("position_page") positionPage: String?,
         @ParamKey("position_type") positionType: String?,
         @ParamKey("id") id: String?,
@@ -609,7 +616,7 @@ interface Logger {
     )
 
     @EventKey("bulletCardList_click")
-    fun bulletcardlistClick(
+    fun bulletCardListClick(
         @ParamKey("position_page") positionPage: String?,
         @ParamKey("position_type") positionType: String?,
         @ParamKey("id") id: String?,
@@ -622,6 +629,9 @@ interface Logger {
         @ParamKey("position_page") positionPage: String?,
         @ParamKey("position_type") positionType: String?
     )
+
+    @EventKey("favoritePlaylists_save")
+    fun favoritePlaylistsSave()
 
     @EventKey("character_click")
     fun characterClick(
@@ -644,7 +654,7 @@ interface Logger {
     )
 
     @EventKey("imageCardList_click")
-    fun imagecardlistClick(
+    fun imageCardListClick(
         @ParamKey("id") id: String?,
         @ParamKey("type_name") typeName: String?,
         @ParamKey("name") name: String?,
@@ -659,18 +669,21 @@ interface Logger {
     )
 
     @EventKey("specialEntrance_click")
-    fun specialentranceClick(
+    fun specialEntranceClick(
         @ParamKey("type_name") typeName: String?
     )
 
     @EventKey("doubleLabelCardList_click")
-    fun doublelabelcardlistClick(
+    fun doubleLabelCardListClick(
         @ParamKey("id") id: String?,
         @ParamKey("type_name") typeName: String?,
         @ParamKey("name") name: String?,
         @ParamKey("position_page") positionPage: String?,
         @ParamKey("position_type") positionType: String?
     )
+
+    @EventKey("upgrade_click")
+    fun upgradeClick()
 
     @EventKey("subscription_optional_view")
     fun subscriptionOptionalView(
