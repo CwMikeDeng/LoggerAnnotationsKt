@@ -749,4 +749,9 @@ interface Logger {
         @ParamKey("position_type") positionType: String?
     )
 
+    @EventKey("test_pr")
+    fun testPr(
+        @ParamKey("pr") pr: String?
+    )
+
 }
